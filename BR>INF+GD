@@ -1,0 +1,529 @@
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Random;
+import java.util.Scanner;
+
+public class brainteaser {
+    public static void main(String[] args) throws Exception {
+        Scanner scanner = new Scanner(System.in);
+
+        int numChallenges = 5;
+        int challengesCompleted = 0;
+        int score = 0;
+
+        Random random = new Random();
+        int radium = random.nextInt();
+
+        String os = System.getProperty("os.name");
+
+        String[] anim = new String[20];
+        Arrays.fill(anim, "");
+
+        String[] loading3 = {".","..","...","....","....."," ",".","..","...","....","....."," ",".","..","...","....",".....",};
+
+        System.out.print("+---------------------------------------------------------+");
+        System.out.print("\n" +
+                "  .:: .::         .::.:::     .::.::     .::.::      .::\n" +
+                "  .:    .::       .::.: .::   .::.::     .:: .::   .::  \n" +
+                "  .:     .::      .::.:: .::  .::.::     .::  .:: .::   \n" +
+                "  .::: .:   .:::::.::.::  .:: .::.::     .::    .::     \n" +
+                "  .:     .::      .::.::   .: .::.::     .::  .:: .::   \n" +
+                "  .:      .:      .::.::    .: ::.::     .:: .::   .::  \n" +
+                "  .:::: .::       .::.::      .::  .:::::   .::      .::\n");
+        System.out.println("+---------------------------------------------------------+");
+        System.out.println("|    BUDGET LINUX (BI-NUX)   //   BY CUYUGAN & CAPID      |");
+        System.out.println("+---------------------------------------------------------+");
+        System.out.println("| * NOTE : PLEASE TYPE WHEN ONLY NECESSARY (DUE TO BUGS)  |");
+        System.out.println("+---------------------------------------------------------+");
+
+        // Prompt the user to start the game
+        boolean startGame = getStartGameChoice();
+
+
+        Thread.sleep(20);
+
+        if (startGame) {
+            //
+            String[] loading1 = {"-","\\", "|", "/", "⠂", "-", "–", "—", "–", "-",
+                    ".", "-", "\\", "|", "/", "-", "*"};
+            //
+            String[] loading2 = {".","..","...","....","....."," ",".","..","...","....","....."," ",".","..","...","....",".....",};
+            //
+            String[] xd = {"■","■","■","■","■","■","■","■","■","■","■","■","■","■","■","■","■","■","■","■",};
+
+            String[] challenges2 = new String[]{
+                    "*━━━━━━━━━━━━━━* TASK-1 [oopsie-doopsie] *━━━━━━━━━━━━━━━━*\n" +
+                            "┌─────────────────────────────────────────────────────────┐\n" +
+                            "├      * Calculate the sum of the first 100 positive      ┤\n" +
+                            "├        integers.                                        ┤\n" +
+                            "└─────────────────────────────────────────────────────────┘",
+
+                    "*━━━━━━━━━━━━━━━━━* TASK-2 [world//map] *━━━━━━━━━━━━━━━━━*\n" +
+                            "┌─────────────────────────────────────────────────────────┐\n" +
+                            "├  . . . . . . . .#######. . . . . . . . . . . # # . . .  ┤\n" +
+                            "├  . . . . . . .#. .#### . . . ####. . .###############.  ┤\n" +
+                            "├  ############. ######. . . ######################### .  ┤\n" +
+                            "├  . . ############. . . . ######################. . . .  ┤\n" +
+                            "├  ### . .$####### . . . . . ################### . . . .  ┤\n" +
+                            "├  . . . . ### .   . . .#######. ##############. # . . .  ┤\n" +
+                            "├  . . . . . ##### . . . .#######. ##########. . . . . .  ┤\n" +
+                            "├  . . . . . .###### . . . .#### . ### . .#### . # . . .  ┤\n" +
+                            "├  . . . . . . ##### . . . .#### # . . . . . ##### . . .  ┤\n" +
+                            "├  . . . . . . ### . . . . . ##. . . . . . . . ### .## .  ┤\n" +
+                            "├  . . . . . . ##. . . . . . . . . . . . . . . . . . # .  ┤\n" +
+                            "└─────────────────────────────────────────────────────────┘\n" +
+                            "┌─────────────────────────────────────────────────────────┐\n" +
+                            "├  * if # = 1                                             ┤\n" +
+                            "├  * if $ = 5                                             ┤\n" +
+                            "├  * then what is total of [#//$] ?                       ┤\n" +
+                            "└─────────────────────────────────────────────────────────┘",
+
+                    "*━━━━━━━━━━━━━━* TASK-3 [sudoku//binary] *━━━━━━━━━━━━━━━━*\n" +
+                            "┌─────────────────────────────────────────────────────────┐\n" +
+                            "├          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ┤\n" +
+                            "├          ┃   │ 7 │   ┃   │ 2 │   ┃   │ 4 │ 6 ┃          ┤\n" +
+                            "├          ┃   │ 6 │   ┃   │   │   ┃ 8 │ 9 │   ┃          ┤\n" +
+                            "├          ┃ 2 │   │   ┃ 8 │   │   ┃ 7 │ 1 │ 5 ┃          ┤\n" +
+                            "├          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ┤\n" +
+                            "├          ┃   │ 8 │ 4 ┃   │ 9 │ 7 ┃   │   │   ┃          ┤\n" +
+                            "├          ┃ 7 │ 1 │   ┃   │   │   ┃   │ 5 │ 9 ┃          ┤\n" +
+                            "├          ┃   │   │   ┃ 1 │ 3 │   ┃ 4 │ 8 │   ┃          ┤\n" +
+                            "├          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ┤\n" +
+                            "├          ┃ 6 │ 9 │ 7 ┃   │   │ 2 ┃   │   │ 8 ┃          ┤\n" +
+                            "├          ┃   │ 5 │ 8 ┃   │   │   ┃   │ 6 │   ┃          ┤\n" +
+                            "├          ┃ 4 │ 3 │   ┃   │ 8 │   ┃   │ 7 │   ┃          ┤\n" +
+                            "├          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━          ┤\n" +
+                            "└─────────────────────────────────────────────────────────┘\n" +
+                            "┌─────────────────────────────────────────────────────────┐\n" +
+                            "├  * SOLVE THE SUDOKU                                     ┤\n" +
+                            "├  * FIND THE SUM                                         ┤\n" +
+                            "├  * DIVIDE IT TO %-2                                     ┤\n" +
+                            "├  * WHAT IS THE ANSWER IN BINARY (ASCII)                 ┤\n" +
+                            "└─────────────────────────────────────────────────────────┘",
+
+                    "*━━━━━━━━━━━━━━━━━* TASK-4 [1 + 1 = 2] *━━━━━━━━━━━━━━━━━━*\n" +
+                            "┌─────────────────────────────────────────────────────────┐\n" +
+                            "├                 * WHAT IS THE LAST DIGIT                ┤\n" +
+                            "├                ━━━━━━━━━━━━━━━━━━━━━━━━━                ┤\n" +
+                            "├  > > > >       ┃ 6 │ 5 │ 4 ┃ 3 │ 2 │ ? ┃       < < < <  ┤\n" +
+                            "├                ━━━━━━━━━━━━━━━━━━━━━━━━━                ┤\n" +
+                            "├                   * HINT : IT'S NOT 1                   ┤\n" +
+                            "└─────────────────────────────────────────────────────────┘",
+
+                    "*━━━━━━━━━━━━━━━* TASK-5 [watata//tops] *━━━━━━━━━━━━━━━━━*\n" +
+                            "┌─────────────────────────────────────────────────────────┐\n" +
+                            "├              * Calculate the following                  ┤\n" +
+                            "├                 1234567890123456789                     ┤\n" +
+                            "├                          +                              ┤\n" +
+                            "├                 9876543210987654321                     ┤\n" +
+                            "└─────────────────────────────────────────────────────────┘",
+
+            };
+
+            // array of solutions to the challenges
+            String[] solutions = new String[] {
+                    "5050",
+                    "275",
+                    "01100010",
+                    "1",
+                    "2222222222222222220"
+            };
+
+            System.out.println("+---------------------------------------------------------+");
+            for (String loadings2 : loading2) {
+                System.out.print("\r" + " > Accessing BRFK server" + loadings2);
+                Thread.sleep(210); // 210 ung orig
+            }
+            System.out.print("\r </> BRFK.client : core stats");
+
+            System.out.println();
+            System.out.println("+---------------------------------------------------------+");
+            getprocess();
+            System.out.print("\r" + "  " + "\u001B[32m" + "GOODS PRE" + "\u001B[0m");
+
+            //
+            System.out.println();
+            System.out.println("+---------------------------------------------------------+");
+            System.out.println(" >" + "\u001B[35;1m sctce@nixcraft-os\u001B[0m" + " ~$ pgrep vimm");
+            for (int i = 0; i < 4; i++) {
+                Thread.sleep(120);
+                System.out.println("  " + radium + "get-" + os);
+                Thread.sleep(120);
+                System.out.println(" >" + "\u001B[35;1m sctce@nixcraft-os\u001B[0m" + " ~$ pgrep vimm");
+            }
+            System.out.println("+---------------------------------------------------------+");
+            System.out.println("\r  ▶ BRFK.client : SUCCESS!");
+            System.out.println("+---------------------------------------------------------+");
+            poser();
+            // CONSOLE
+            for (String anims : anim) {
+                System.out.println(anims);
+                Thread.sleep(0); // Pause for 250 milliseconds
+            }
+            // CONSOLE
+            for (String anims : anim) {
+                System.out.println(anims);
+                Thread.sleep(0); // Pause for 250 milliseconds
+            }
+            System.out.println("───────────────────────────────────────────────────────────");
+            System.out.println("V0.0.1                  2023                         BI-NUX");
+            System.out.println("+---------------------------------------------------------+");
+            System.out.println("| * NOTE : PLEASE TYPE WHEN ONLY NECESSARY (DUE TO BUGS)  |");
+            System.out.println("+---------------------------------------------------------+");
+            System.out.println("━━━━━━━━━━━━━━━━━━━━━ (CLIENT STATUS) ━━━━━━━━━━━━━━━━━━━━━");
+            System.out.println("\r  ▶ // LIVE -- BETA                  ▶ OS : " + os);
+            System.out.println("───────────────────────────────────────────────────────────");
+            System.out.print("""
+                    88""Yb 88""Yb 888888 88  dP      88888 Yb    dP    \s
+                    88__dP 88__dP 88__   88odP          88  Yb  dP     \s
+                    88""Yb 88"Yb  88""   88"Yb      o.  88   YbdP   .o.\s
+                    88oodP 88  Yb 88     88  Yb     "bodP'    YP    `"'\s
+                """);
+            System.out.println("┌─────────────────────────────────────────────────────────┐");
+            System.out.println("├ 10100101001001010 WELCOME TO BRAINFK 010101010010101001 ┤");
+            System.out.println("└─────────────────────────────────────────────────────────┘");
+            System.out.println("━━━━ ABOUT BRFK ━━━━━━━━━━━━━━━━━━━━━━━━━" + " ┌── MAIN MENU ──┐");
+            System.out.println("║  * BR>INF+CK GAME BUT IN JAVA         ║" + " ├ [P] PLAY      ┤");
+            System.out.println("║  * NOTE : TYPE WHEN IT'S NECESSARY    ║" + " ├ [M] MECHANICS ┤");
+            System.out.println("║  * PROGFUN FINAL PROJECT              ║" + " ├ [E] EXIT      ┤");
+            System.out.println("─────────────────────────────────────────" + " └───────────────┘");
+
+            //y
+            while (true) {
+                System.out.print("\u001B[1;33m" + " ▶ BRFK : please type ([P]-[M]-[E]) : " + "\u001B[0m");
+                String choice = scanner.nextLine();
+                System.out.println("┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄");
+                if (choice.equalsIgnoreCase("P") || choice.equalsIgnoreCase("Play")) {
+                    // Start the game
+                    getrekt();
+                    System.out.println("\r </> GLHF! ");
+                    break;
+                }
+                else if (choice.equalsIgnoreCase("M") || choice.equalsIgnoreCase("Mechanics")) {
+                    // Exit the program
+                    getrekt();
+                    System.out.print(" " + "\r * OKIE");
+                    Thread.sleep(250);
+                    System.out.println();
+                    System.out.println("───────────────────────────────────────────────────────────");
+                    //
+                    System.out.println("┌─── ABOUT BRFK ──────────────────────────────────────────┐");
+                    System.out.println("├  * YOU WILL BE ASSIGNED 5-TASKS TO SOLVE                ┤");
+                    System.out.println("├  * EACH CORRECT ANSWER IS 1-POINT                       ┤");
+                    System.out.println("├  * SECRET MESSAGE AT THE END                            ┤");
+                    System.out.println("├  * YOU FAIL = BSOD                                      ┤");
+                    System.out.println("└─────────────────────────────────────────────────────────┘");
+                    System.out.println("───────────────────────────────────────────────────────────");
+                }
+                else if (choice.equalsIgnoreCase("C") || choice.equalsIgnoreCase("Cheats") || choice.equalsIgnoreCase("Cheat")) {
+                    // Exit the program
+                    getrekt();
+                    System.out.print(" " + "\r * OKIE");
+                    Thread.sleep(250);
+                    System.out.println();
+                    System.out.println("───────────────────────────────────────────────────────────");
+                    //
+                    System.out.println("┌─── CHEAT MODE ──────────────────────────────────────────┐");
+                    System.out.println("├  [TASK #1] ANSWER =  5050                               ┤");
+                    System.out.println("├  [TASK #2] ANSWER =  275                                ┤");
+                    System.out.println("├  [TASK #3] ANSWER =  01100010                           ┤");
+                    System.out.println("├  [TASK #4] ANSWER =  1                                  ┤");
+                    System.out.println("├  [TASK #5] ANSWER =  2222222222222222220                ┤");
+                    System.out.println("└─────────────────────────────────────────────────────────┘");
+                    System.out.println("───────────────────────────────────────────────────────────");
+                }
+                else if (choice.equalsIgnoreCase("E") || choice.equalsIgnoreCase("Exit")) {
+                    // Exit the program
+                    for (String xds : xd) {
+                        System.out.print(xds);
+                        Thread.sleep(250); // Pause for 250 milliseconds
+                    }
+                    System.out.println("Exiting program.");
+                    return;
+                } else {
+                    for (String loadings1 : loading1) {
+                        System.out.print("\r" + " </> BRFK.queue : " + loadings1 + " Loading ");
+                        Thread.sleep(250); // Pause for 250 milliseconds
+                    }
+                    System.out.print("\r * INVALID!!");
+                    Thread.sleep(250);
+                    System.out.println();
+                    System.out.println("───────────────────────────────────────────────────────────");
+                    //
+                    System.out.println(" ▶ BRFK : invalid token. please enter only (play//mechanics//exit)");
+                    System.out.println(" </> BRFK.resetter ");
+                    for (String loadings1 : loading1) {
+                        System.out.print("\r" + " </> resetting client : " + loadings1 + " Loading ");
+                        Thread.sleep(250); // Pause for 250 milliseconds
+                    }
+
+                    System.out.print("\r * OKIE");
+                    Thread.sleep(250);
+                    System.out.println();
+                    System.out.println("───────────────────────────────────────────────────────────");
+                }
+            }
+
+            // LOADING SCREEN
+            System.out.println("───────────────────────────────────────────────────────────");
+            System.out.println("━━━━━━━━━━━━━━━━━━━ (INITIALIZING BRFK) ━━━━━━━━━━━━━━━━━━━");
+            inlz();
+            System.out.println("───────────────────────────────────────────────────────────");
+            System.out.println("┌─────────────────────────────────────────────────────────┐");
+            System.out.println("├ 10100101001001010 WELCOME TO BRAINFK 010101010010101001 ┤");
+            System.out.println("└─────────────────────────────────────────────────────────┘");
+            // CONSOLE
+            for (String anims : anim) {
+                System.out.println(anims);
+                Thread.sleep(10); // Pause for 250 milliseconds
+            }
+            // CONSOLE
+            for (String anims : anim) {
+                System.out.println(anims);
+                Thread.sleep(10); // Pause for 250 milliseconds
+            }
+
+            // TIMER ASSETS
+            long startTime = System.currentTimeMillis();
+            long elapsedTime = 0L;
+            long elapsedSeconds = 0L;
+
+            // TIMER
+            while (elapsedSeconds < 5) {
+                elapsedTime = (new Date()).getTime() - startTime;
+                elapsedSeconds = elapsedTime / 1000; // 1000
+
+                // display the timer countdown
+                System.out.print("\u001B[7;33m" + "\r ▶ BRFK.JV : THE GAME WILL START IN " + (5 - elapsedSeconds) + "\u001B[0m");
+
+                // pause for 1 second
+                Thread.sleep(1000); // 1000 ung orig
+            }
+            System.out.print("\r ");
+
+            // MAIN
+            System.out.println();
+            System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+            System.out.println("               BEAT THE GAME - WIN THE GAME ");
+            // present the challenges to the player one by one
+            for (int i = 0; i < numChallenges; i++) {
+                System.out.println("───────────────────────────────────────────────────────────");
+                System.out.println(challenges2[i]);
+                Thread.sleep(350);
+                boolean correct = false;
+                int attempts = 0;
+
+                // BASICALLY may 2nd chance
+                while (!correct && attempts < 2) {
+                    System.out.print(" - > Enter your answer : ");
+                    String solution = scanner.nextLine();
+                    System.out.println("┌──────────────────────────────────────────────── LOGS ───┐");
+                    getrekt2();
+
+                    if (i == 3) {
+                        System.out.println("├  " + "▶ BRFK.JV : OMCM!!" + "                                     ┤");
+                    }
+                    // check if the solution is correct
+                    if (solution.trim().equals(solutions[i].trim())) {
+                        correct = true;
+                        System.out.println("├  " + "▶ BRFK.JV : Correct!" + "                                   ┤");
+                        System.out.println("└─────────────────────────────────────────────────────────┘");
+                        score++;
+                        challengesCompleted++;
+                        nextQuestion();
+                        System.out.println();
+                        mens();
+                    } else {
+                        System.out.println("├  " + "▶ BRFK.JV : Incorrect." + "                                 ┤");
+                        System.out.println("└─────────────────────────────────────────────────────────┘");
+                        attempts++;
+                        if (attempts == 2) {
+                            correct = true;
+                            nextQuestion();
+                            System.out.println();
+                            mens();
+                        } else {
+                            // prevent the user from entering anything if they have already tried twice
+                            boolean validInput = false;
+                            while (!validInput) {
+                                System.out.print("  </> BRFK.JV : Do you want to try again? (y/n) ");
+                                String tryAgain = scanner.nextLine();
+                                System.out.println("───────────────────────────────────────────────────────────");
+                                if (tryAgain.equalsIgnoreCase("N")) {
+                                    correct = true;
+                                    validInput = true;
+                                    nextQuestion();
+                                    System.out.println();
+                                    mens();
+                                } else if (tryAgain.equalsIgnoreCase("Y")) {
+                                    validInput = true;
+                                } else {
+                                    System.out.println("  </> BRFK.JV : INVALID!! plis enter onli (y/n) ");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+                    // print the final score and number of challenges completed
+            System.out.println("┌────────────────────── " + challengesCompleted + "/" + numChallenges + " COMPLETED " + "────────────────────┐");
+            System.out.println("└─────────────────────────────────────────────────────────┘");
+
+
+            // determine if the player has won the game
+            if (challengesCompleted == numChallenges) {
+                System.out.println("                       .-=========-.\n" +
+                        "                       \\'-=======-'/\n" +
+                        "                       _|   .=.   |_\n" +
+                        "                      ((|  {{1}}  |))\n" +
+                        "                       \\|   /|\\   |/\n" +
+                        "                        \\__ '`' __/\n" +
+                        "                          _`) (`_\n" +
+                        "                        _/_______\\_\n" +
+                        "                       /___________\\\n");
+                System.out.println("┌──────────────────── CONGRATULATIONS ────────────────────┐");
+                System.out.println("├─────────────────────────────────────────────────────────┤");
+                System.out.println("├                        YOU WIN !!                       ┤");
+                System.out.println("└─────────────────────────────────────────────────────────┘");
+            } else {
+                System.out.println("┌──────────────────────── BR>INF+CK ──────────────────────┐");
+                System.out.println("├─────────────────────────────────────────────────────────┤");
+                System.out.println("├       [ MISSION FAILED ] BETTER LUCK NEXT TIME          ┤");
+                System.out.println("└─────────────────────────────────────────────────────────┘");
+                System.out.println("    ALL RIGHTS RESERVED -------------------------- 2023");
+            }
+        } else {
+            // EXIT SA MAY LAUNCHER
+            for (String loadings3 : loading3) {
+                System.out.print("\r" + " </> BRFK.queue : " + loadings3 );
+                Thread.sleep(250); // Pause for 250 milliseconds
+            }
+            System.out.println("\r Goodbye!");
+        }
+        if (challengesCompleted == 5) {
+            System.out.println();
+            System.out.println("┌───────────────── PROGFUN FINAL PROJECT ─────────────────┐");
+            System.out.println("├─────────────────────────────────────────────────────────┤");
+            System.out.println("├         BY CUYUGAN & CAPID // BR>INF+CK [JAVA]          ┤");
+            System.out.println("└─────────────────────────────────────────────────────────┘");
+            System.out.print("""
+                    88""Yb 88""Yb 888888 88  dP      88888 Yb    dP    \s
+                    88__dP 88__dP 88__   88odP          88  Yb  dP     \s
+                    88""Yb 88"Yb  88""   88"Yb      o.  88   YbdP   .o.\s
+                    88oodP 88  Yb 88     88  Yb     "bodP'    YP    `"'\s
+                """);
+            System.out.println();
+            System.out.println("    ALL RIGHTS RESERVED -------------------------- 2023");
+        }
+    }
+
+    // METHODS***
+    public static void poser() {
+        String[] anim = new String[20];
+        Arrays.fill(anim, "");
+        for (String anims : anim) {
+            System.out.print(anims);
+        }
+        for (String anims : anim) {
+            System.out.print(anims);
+        }
+    }
+
+    // LOADING #1
+    public static void getrekt() throws InterruptedException {
+
+        String[] loading1 = {"-","\\", "|", "/", "⠂", "-", "–", "—", "–", "-",
+                ".", "-", "\\", "|", "/", "-", "*"};
+
+        for (String loadings1 : loading1) {
+            System.out.print("\r" + " </> BRFK.queue : " + loadings1 + " Loading ");
+            Thread.sleep(250); // Pause for 250 milliseconds
+        }
+    }
+
+    // LOADING #2
+    public static void getrekt2() throws InterruptedException {
+        String[] loading1 = {"*","#","*","#","*","#","*","#","*","#",};
+
+        for (String loadings1 : loading1) {
+            System.out.print("\r" + "├  " + "▶ BRFK.JV : Checking answers " + loadings1 + "                         ┤");
+            Thread.sleep(250); // Pause for 250 millisecond
+
+            System.out.print("\r" + "├  " + "</> BRFK.JV : COMPLETED" + "                                ┤");
+        }
+        System.out.println();
+    }
+
+    //
+    public static void mens() {
+
+        String[] anim = new String[20];
+        Arrays.fill(anim, "");
+
+        for (String anims : anim) {
+            System.out.println(anims);
+        }
+        for (String anims : anim) {
+            System.out.println(anims);
+        }
+    }
+
+    //
+    public static void inlz() throws InterruptedException {
+
+        String output = " > *keltek\t38662\t0.0\t0.2\t1892738";
+        for (int i = 0; i < 5; i++) {
+            System.out.println(output);
+            Thread.sleep(210);
+            System.out.println("\r ");
+            Thread.sleep(210);
+        }
+    }
+
+    // next quesiton
+    public static void nextQuestion() throws InterruptedException {
+        String[] loading1 = {"-","\\", "|", "/", "⠂", "-", "–", "—", "–", "-",
+                ".", "-", "\\", "|", "/", "-", "*"};
+
+        for (String loadings1 : loading1) {
+            System.out.print("\r" + " </> BRFK.JV : proceeding to next task " + loadings1 + " Loading ");
+            Thread.sleep(250); // Pause for 250 milliseconds
+            System.out.print("\r" + " ▶ NEXT TASK ");
+        }
+    }
+
+    // SUS
+    public static void getprocess() throws Exception {
+        Process process = Runtime.getRuntime().exec("tasklist /FO CSV /NH");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            // Parse the CSV line and print the image name and memory usage in green
+            String[] fields = line.split(",");
+            String imageName = fields[0].replaceAll("\"", "");
+            String memoryUsage = fields[4].replaceAll("\"", "");
+            System.out.print("\r" + "  " + "\u001B[3;32m" + imageName + ": " + memoryUsage + "\u001B[0m");
+            Thread.sleep(20);
+        }
+    }
+
+    // LAUNCHER
+    public static boolean getStartGameChoice() {
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to enter their choice
+        System.out.print("\r" + "\u001B[1;33m  \rLaunch the game? (Y/N) : \u001B[0m");
+        String choice = scanner.nextLine();
+
+        // Validate the user's choice
+        while (!choice.equalsIgnoreCase("y") && !choice.equalsIgnoreCase("n")) {
+            System.out.print("Invalid choice. Please try again.");
+            System.out.print("\r" + "\u001B[1;33m  \rLaunch the game? (Y/N) : \u001B[0m");
+            choice = scanner.nextLine();
+        }
+        return choice.equalsIgnoreCase("y");
+    }
+}
